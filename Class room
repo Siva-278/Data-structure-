@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STUDENTS 50
+#define MAX_NAME_LENGTH 50
+
+int main() {
+    char studentList[MAX_STUDENTS][MAX_NAME_LENGTH];
+    int numStudents = 0;
+    char newStudent[MAX_NAME_LENGTH];
+
+    printf("Enter the names of students who have submitted their assignments (enter 'done' to stop):\n");
+
+    // Loop to accept student names until 'done' is entered
+    while (1) {
+        printf("Enter student name: ");
+        scanf("%s", newStudent);
+
+        // Check if the input is 'done', if so, break from the loop
+        if (strcmp(newStudent, "done") == 0) {
+            break;
+        }
+
+        // Check if the maximum number of students has been reached
+        if (numStudents == MAX_STUDENTS) {
+            printf("Maximum number of students reached!\n");
+            break;
+        }
+
+        // Insert the new student name into the list
+        strcpy(studentList[numStudents], newStudent);
+        numStudents++;
+    }
+
+    // Print the list of students who have submitted their assignments
+    printf("\nList of students who have submitted their assignments:\n");
+    for (int i = 0; i < numStudents; i++) {
+        printf("%d. %s\n", i + 1, studentList[i]);
+    }
+
+    return 0;
+}
+In this program, we use a 2D array studentList to store the names of the students who have submitted their assignments. The array allows for the storage of up to MAX_STUDENTS student names, with each name having a maximum length of MAX_NAME_LENGTH.
